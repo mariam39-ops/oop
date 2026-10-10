@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AssigmentOopOne
 {
-    internal class Shipment
+    internal struct Shipment
     {
      //part2 q2
             private string trackingCode;

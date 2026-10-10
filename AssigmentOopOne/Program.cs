@@ -26,9 +26,54 @@
 
 
             #endregion
-            #region part2 q1
+            DeliveryAddress d1 = new DeliveryAddress("mansoura", "Glaa", 43);
+            DeliveryAddress d2 = d1;
+            Console.WriteLine(d1.GetFullAdress());
+            Console.WriteLine(d2.GetFullAdress());
+            d2.setCity("cairo");
+            d2.setStreet("Ahmed Araby");
+            d2.setBuldingNum(88);
+            Console.WriteLine(d1.GetFullAdress());
+            Console.WriteLine(d2.GetFullAdress());
+            Shipment s = new Shipment("1445", "this is skin care", 30, 150, d1);
+            s.TrackingCode = "12345";
+            s.Descrption = "this is a clothes";
+            s.Weight = 20;
+            s.destination.GetFullAdress();
+            Console.WriteLine(s.PrintShipment());
 
-            #endregion
+            DeliveryCenter deliveryCenter1 = new DeliveryCenter();
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine("Please Enter Tracking Code : ");
+                string tcode = Console.ReadLine();
+                Console.WriteLine("Please Enter Descrption");
+                string descraption = Console.ReadLine();
+                Console.WriteLine(" please enter Weigth");
+                double weigth = double.Parse(Console.ReadLine());
+                Console.WriteLine("please Enter deliveryFee");
+                double deliveryFee = double.Parse(Console.ReadLine());
+                Console.WriteLine("Enter destination");
+                DeliveryAddress des = new DeliveryAddress();
+                Console.WriteLine("please enter your city: ");
+                des.setCity(Console.ReadLine());
+                Console.WriteLine("please Enter your street : ");
+                des.setStreet(Console.ReadLine());
+                Console.WriteLine("please Enter buliding num : ");
+                des.setBuldingNum(int.Parse(Console.ReadLine()));
+                Shipment si = new Shipment(tcode, descraption, weigth, deliveryFee, des);
+                deliveryCenter1.AddShipment(si);
+
+            }
+            Console.WriteLine(deliveryCenter1[0]);
+            Console.WriteLine(deliveryCenter1[1]);
+            Console.WriteLine(deliveryCenter1[2]);
+            Console.WriteLine("please enter your tracking code to search");
+            Console.WriteLine("please enter the tracking code to search :");
+
+            string? trackingCode = Console.ReadLine();
+
+            object value = deliveryCenter1[trackingCode];
         }
     }
 }
